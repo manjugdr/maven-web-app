@@ -16,6 +16,7 @@ pipeline {
                        sshagent(['sshkeypair']) {
                        sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.29.59"
                        sh 'scp -i chaithra.pem -r /var/lib/jenkins/workspace/maven-web/ ubuntu@172.31.29.59:/home/ubuntu/maven-web-app'
+                       sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.29.59"
                        sh 'docker build -t manjugdr/maven-web-app:v1 .'
                 }
             }
