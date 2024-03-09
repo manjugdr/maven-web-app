@@ -7,7 +7,9 @@ pipeline {
         stage('Build Maven'){
             steps{
                 git url:'https://github.com/manjugdr/maven-web-app/', branch: "master"
-               sh 'mvn clean install'
+                def mavenHome = tool name: "Maven-3.8.6", type: "maven"
+                def mavenCMD = "${mavenHome}/bin/mvn"
+                sh "${mavenCMD} clean package"
             }
         }
         stage('Sonatype Nexus Repository'){
