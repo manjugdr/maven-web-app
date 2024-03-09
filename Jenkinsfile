@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Sonatype Nexus Repository'){
             steps{
-               nexusArtifactUploader artifacts: [[artifactId: 'o1-maven-web-app', classifier: '', file: 'target/maven-web-app.war', type: 'war']], credentialsId: 'nexus3', groupId: 'in.ashokit', nexusUrl: 'http://54.82.229.178:8081/', nexusVersion: 'nexus3', protocol: 'http', repository: 'ashokit-SNAPSHOT-repository', version: '1.0-SNAPSHOT'
+               nexusArtifactUploader artifacts: [[artifactId: '01-maven-web-app', classifier: '', file: 'target/01-maven-web-app.war', type: 'war']], credentialsId: 'nexus3', groupId: 'in.ashokit', nexusUrl: 'http://54.82.229.178:8081/', nexusVersion: 'nexus3', protocol: 'http', repository: 'ashokit-SNAPSHOT-repository', version: '1.0-SNAPSHOT'
             }
         }
            stage('Build docker image'){
