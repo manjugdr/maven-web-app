@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: spring-boot-k8s
+      app: spring-boot-maven-web-app
   replicas: 2 # Number of replicas that will be created for this deployment
   template:
     metadata:
