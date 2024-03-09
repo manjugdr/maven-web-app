@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment # Kubernetes resource kind we are creating
 metadata:
-  name: spring-boot-k8s-deployment
+  name: spring-boot-maven-web-app
 spec:
   selector:
     matchLabels:
@@ -10,11 +10,11 @@ spec:
   template:
     metadata:
       labels:
-        app: spring-boot-k8s
+        app: spring-boot-maven-web-app
     spec:
       containers:
-        - name: spring-boot-k8s
-          image: manjugdr/endtoendproject:v1 # Image that will be used to containers in the cluster
+        - name: spring-boot-maven-web-app
+          image: manjugdr/maven-web-app:v1 # Image that will be used to containers in the cluster
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080 # The port that the container is running on in the cluster
@@ -25,10 +25,10 @@ spec:
 apiVersion: v1 # Kubernetes API version
 kind: Service # Kubernetes resource kind we are creating
 metadata: # Metadata of the resource kind we are creating
-  name: springboot-k8ssvc
+  name: springboot-maven-web-app-svc
 spec:
   selector:
-    app: spring-boot-k8s
+    app: spring-boot-maven-web-app
   ports:
     - protocol: "TCP"
       port: 8080 # The port that the service is running on in the cluster
